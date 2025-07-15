@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Litoh Graphics Studio - Bringing Your Vision to Life in Color</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cyan: #00AEEF;
+            --magenta: #EC008C;
+            --yellow: #FFF200;
+            --black: #000000;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --gray: #6C757D;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--black);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--light-gray) 0%, #E8F4FD 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(0, 174, 239, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(236, 0, 140, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(255, 242, 0, 0.1) 0%, transparent 50%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--cyan), var(--magenta));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: var(--gray);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--cyan), var(--magenta));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 174, 239, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--black);
+            border: 2px solid var(--black);
+        }
+
+        .btn-secondary:hover {
+            background: var(--black);
+            color: white;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-logo {
+            width: 400px;
+            height: auto;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* CMYK Progress Animation */
+        .cmyk-progress {
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--light-gray);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            display: flex;
+            animation: progress 4s ease-in-out infinite;
+        }
+
+        .progress-segment {
+            flex: 1;
+            height: 100%;
+        }
+
+        .progress-segment:nth-child(1) { background: var(--cyan); }
+        .progress-segment:nth-child(2) { background: var(--magenta); }
+        .progress-segment:nth-child(3) { background: var(--yellow); }
+        .progress-segment:nth-child(4) { background: var(--black); }
+
+        @keyframes progress {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--cyan), var(--magenta));
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--gray);
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 30px;
+            background: var(--light-gray);
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, var(--cyan), var(--magenta));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        /* Services Section */
+        .services {
+            background: var(--light-gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, var(--cyan), var(--magenta));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--black);
+        }
+
+        .service-card p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background: var(--light-gray);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.05);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, var(--cyan), var(--magenta));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .portfolio-info {
+            padding: 20px;
+        }
+
+        .portfolio-info h3 {
+            margin-bottom: 10px;
+            color: var(--black);
+        }
+
+        .portfolio-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: var(--light-gray);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-form {
+            background: var(--light-gray);
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--cyan), var(--magenta));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .payment-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn-mpesa {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .btn-mpesa:hover {
+            background: #45a049;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: var(--cyan);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        .footer-section a:hover {
+            color: var(--cyan);
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+            transition: transform 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .hero-logo {
+                width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Litoh Graphics Studio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: #f5f5f5;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav.container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            position: relative;
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            padding: 10px 15px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #FFF200;
+        }
+
+        .floating-indicator {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: #FFF200;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+
+        svg.logo {
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo-container">
+                <svg class="logo" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Main Logo Rectangle -->
+                    <rect x="50" y="40" width="300" height="80" fill="none" stroke="#000" stroke-width="3"/>
+                    
+                    <!-- Yellow Circle -->
+                    <circle cx="320" cy="50" r="35" fill="#FFF200"/>
+                    
+                    <!-- LITO Text -->
+                    <text x="70" y="110" font-family="serif" font-size="60" font-weight="bold" fill="#000">LITO</text>
+                    
+                    <!-- CMYK Color Bars -->
+                    <rect x="50" y="130" width="75" height="10" fill="#00AEEF"/>
+                    <rect x="125" y="130" width="75" height="10" fill="#EC008C"/>
+                    <rect x="200" y="130" width="75" height="10" fill="#FFF200"/>
+                    <rect x="275" y="130" width="75" height="10" fill="#000"/>
+                    
+                    <!-- Subtitle -->
+                    <text x="60" y="165" font-family="Arial" font-size="18" font-weight="normal" fill="#000" letter-spacing="2">GRAPHIC DESIGN STUDIO</text>
+                </svg>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <div class="floating-indicator" id="indicator"></div>
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const links = document.querySelectorAll(".nav-links li a");
+            const indicator = document.getElementById("indicator");
+
+            function updateIndicator(element) {
+                const parent = element.parentElement;
+                indicator.style.width = `${parent.offsetWidth}px`;
+                indicator.style.left = `${parent.offsetLeft}px`;
+            }
+
+            links.forEach(link => {
+                link.addEventListener("click", (e) => {
+                    updateIndicator(e.target);
+                });
+            });
+
+            // Initialize with first link
+            if (links.length > 0) {
+                updateIndicator(links[0]);
+            }
+        });
+    </script>
+ </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Bringing Your Vision to Life in Color</h1>
+                    <p>Professional graphic design, branding, and printing services that make your business stand out. From concept to creation, we deliver excellence in every project.</p>
+                    <div class="cta-buttons">
+                        <a href="#contact" class="btn btn-primary">Get Started</a>
+                        <a href="#portfolio" class="btn btn-secondary">View Portfolio</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <svg class="hero-logo" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Main Logo Rectangle -->
+                        <rect x="50" y="40" width="300" height="80" fill="none" stroke="#000" stroke-width="3"/>
+                        
+                        <!-- Yellow Circle -->
+                        <circle cx="320" cy="50" r="35" fill="#FFF200"/>
+                        
+                        <!-- LITO Text -->
+                        <text x="70" y="110" font-family="serif" font-size="60" font-weight="bold" fill="#000">LITO</text>
+                        
+                        <!-- CMYK Color Bars -->
+                        <rect x="50" y="130" width="75" height="10" fill="#00AEEF"/>
+                        <rect x="125" y="130" width="75" height="10" fill="#EC008C"/>
+                        <rect x="200" y="130" width="75" height="10" fill="#FFF200"/>
+                        <rect x="275" y="130" width="75" height="10" fill="#000"/>
+                        
+                        <!-- Subtitle -->
+                        <text x="60" y="165" font-family="Arial" font-size="18" font-weight="normal" fill="#000" letter-spacing="2">GRAPHIC DESIGN STUDIO</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div class="cmyk-progress">
+            <div class="progress-bar">
+                <div class="progress-segment"></div>
+                <div class="progress-segment"></div>
+                <div class="progress-segment"></div>
+                <div class="progress-segment"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Litoh Graphics Studio</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>At Litoh Graphics Studio, we are passionate about transforming ideas into stunning visual experiences. With years of expertise in graphic design, branding, and printing, we help businesses and individuals communicate their message effectively through creative design solutions.</p>
+                    <p>Our team combines artistic vision with technical expertise to deliver designs that not only look amazing but also drive results. From logo design to complete brand identity packages, we're your partner in visual storytelling.</p>
+                </div>
+                <div class="about-features">
+                    <div class="feature">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Creative Excellence</h3>
+                        <p>Award-winning designs that capture attention</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Fast Delivery</h3>
+                        <p>Quick turnaround times without compromising quality</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">💰</div>
+                        <h3>Affordable Pricing</h3>
+                        <p>Professional services at competitive rates</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🤝</div>
+                        <h3>24/7 Support</h3>
+                        <p>Always available to help with your projects</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Graphic Design</h3>
+                    <img src="https://digiaskcollege.ac.ke/govumef/2025/01/Graphic-Design-Course-in-Kenya-_-Digiask-Training-College.webp" alt="graphics" width="320" height="345">
+                    <p>Custom graphics, layouts, and visual designs for all your marketing needs. From brochures to social media graphics, we create designs that speak to your audience.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <h3>Branding</h3>
+                    <img src="https://megabrandsprinters.com/wp-content/uploads/2020/10/Printing-Options-705x338-1.jpg" alt="Printing" width="320" height="345">
+                    <p>Complete brand identity packages including logo design, color schemes, typography, and brand guidelines to establish your unique market presence.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🖨️</div>
+                    <h3>Printing</h3>
+                    <img src="https://cdn.cloudbf.com/thumb/pad/400x400_xsize/files/116/img/2024/07/09/202407091728200188310.jpg.webp" alt="print" width="320" height="345">
+                    <p>High-quality printing services for business cards, flyers, banners, and promotional materials. We ensure your designs look perfect in print.</p>
+                </div>
+                <div class="service-card">
+  <div class="service-icon">💻</div>
+  <h3>Digital Artwork</h3>
+  <img 
+    src="https://res.cloudinary.com/dtjjgiitl/image/upload/q_auto:good,f_auto,fl_progressive/v1752585912/lwxcwi4issmgpbwbifhy.jpg" 
+    alt="Digital Artwork" 
+    width="160" 
+    height="160" 
+    style="display: block; margin: 10px auto; border-radius: 10px;" />
+  <p>Digital illustrations, web graphics, and multimedia designs optimized for online platforms and digital marketing campaigns.</p>
+</div>
+
+        </div>
+    </section>
+
+<section id="portfolio" class="portfolio" style="padding: 60px 0; background-color: #f9f9f9;">
+  <div class="container" style="max-width: 1100px; margin: auto;">
+    <h2 class="section-title" style="text-align: center; font-size: 2.5rem; margin-bottom: 40px;">Portfolio Gallery</h2>
+
+    <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+
+     <!-- Item 1 -->
+<a href="https://wa.me/254728974780?text=Hello%20Litoh%20Graphics%20Studio%2C%20I'm%20interested%20in%20your%20Customized%20prints%20Branding%20services." 
+   target="_blank" 
+   style="text-decoration: none; color: inherit;">
+  <div class="portfolio-item" style="position: relative; overflow: hidden; border-radius: 10px;">
+    <div class="portfolio-image"
+         style="background-image: url('https://res.cloudinary.com/dtjjgiitl/image/upload/q_auto:good,f_auto,fl_progressive/v1752581601/hlypgm4fijyvjawohjok.jpg'); background-size: cover; background-position: center; height: 200px;">
+    </div>
+    <div class="portfolio-info" style="padding: 15px; background-color: white;">
+      <h3>Customized Prints</h3>
+      <p>Hoodies, Calendars, Mugs and Pens</p>
+    </div>
+  </div>
+</a>
+
+
+      <!-- Item 2 -->
+<a href="https://wa.me/254728974780?text=Hello%20Litoh%20Graphics%20Studio%2C%20I'm%20interested%20in%20your%20Social%20Media%20Campaign%20designs." 
+   target="_blank" 
+   style="text-decoration: none; color: inherit;">
+  <div class="portfolio-item" style="position: relative; overflow: hidden; border-radius: 10px;">
+    <div class="portfolio-image"
+         style="background-image: url('https://res.cloudinary.com/dtjjgiitl/image/upload/q_auto:good,f_auto,fl_progressive/v1752584828/duvr9bbkim7bubo4lnqb.jpg'); background-size: cover; background-position: center; height: 200px;">
+    </div>
+    <div class="portfolio-info" style="padding: 15px; background-color: white;">
+      <h3>Social Media Campaigns</h3>
+      <p>Eye-catching social media graphics for product launch</p>
+    </div>
+  </div>
+</a>
+
+
+     <!-- Item 3 -->
+<a href="https://wa.me/254728974780?text=Hello%20Litoh%20Graphics%20Studio%2C%20I'm%20interested%20in%20your%20Corporate%20Brochure%20design%20services." 
+   target="_blank" 
+   style="text-decoration: none; color: inherit;">
+  <div class="portfolio-item" style="position: relative; overflow: hidden; border-radius: 10px;">
+    <div class="portfolio-image"
+         style="background-image: url('https://res.cloudinary.com/dtjjgiitl/image/upload/q_auto:good,f_auto,fl_progressive/v1752584924/ultf9xokk5hyorqytqxf.jpg'); background-size: cover; background-position: center; height: 200px;">
+    </div>
+    <div class="portfolio-info" style="padding: 15px; background-color: white;">
+      <h3>Corporate Brochure</h3>
+      <p>Professional brochure design for business services</p>
+    </div>
+  </div>
+</a>
+
+
+   <!-- Item 4 -->
+<a href="https://wa.me/254728974780?text=Hello%20Litoh%20Graphics%20Studio%2C%20I'm%20interested%20in%20your%20Tech%20Startup%20Logo%20design." 
+   target="_blank" 
+   style="text-decoration: none; color: inherit;">
+  <div class="portfolio-item" style="position: relative; overflow: hidden; border-radius: 10px;">
+    <div class="portfolio-image"
+         style="background-image: url('https://res.cloudinary.com/dtjjgiitl/image/upload/q_auto:good,f_auto,fl_progressive/v1752585014/pbhwc34v1rkojpkkpqff.jpg'); background-size: cover; background-position: center; height: 200px;">
+    </div>
+    <div class="portfolio-info" style="padding: 15px; background-color: white;">
+      <h3>Flyers and Logos</h3>
+      <p>Modern logo design for any company</p>
+    </div>
+  </div>
+</a>
+
+
+    </div>
+  </div>
+</section>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+    </div>
+  </div>
+</section>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Client Testimonials</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <div class="testimonial-text">"Litoh Graphics Studio transformed our brand identity completely. Their creativity and attention to detail exceeded our expectations. Highly recommended!"</div>
+                    <div class="testimonial-author">- Sarah Wanjiku, CEO TechVenture</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-text">"Professional service, quick delivery, and amazing designs. They understood our vision perfectly and brought it to life beautifully."</div>
+                    <div class="testimonial-author">- David Kimani, Marketing Director</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-text">"The team at Litoh Graphics Studio is incredibly talented. They created stunning marketing materials that really helped our business grow."</div>
+                    <div class="testimonial-author">- Grace Muthoni, Small Business Owner</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+<section id="contact" class="contact" style="background-color: #f5f5f5; padding: 60px 0;">
+  <div class="container" style="max-width: 1100px; margin: 0 auto; padding: 0 20px;">
+    <h2 class="section-title" style="text-align: center; margin-bottom: 40px; font-size: 2rem; color: #333;">
+      Contact & Order Now
+    </h2>
+
+    <div class="contact-content" style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: center;">
+
+      <!-- Contact Form -->
+      <div class="contact-form" style="flex: 1; min-width: 320px; max-width: 500px; background-color: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+        <h3 style="margin-bottom: 20px;">Get Your Project Started</h3>
+        <form id="whatsappForm">
+          <div class="form-group" style="margin-bottom: 15px;">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+          </div>
+          <div class="form-group" style="margin-bottom: 15px;">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+          </div>
+          <div class="form-group" style="margin-bottom: 15px;">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service" required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
+              <option value="">Select a service</option>
+              <option value="Graphic Design">Graphic Design</option>
+              <option value="Branding">Branding</option>
+              <option value="Printing">Printing</option>
+              <option value="Digital Artwork">Digital Artwork</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 20px;">
+            <label for="message">Project Details</label>
+            <textarea id="message" name="message" placeholder="Tell us about your project..." required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; min-height: 100px;"></textarea>
+          </div>
+
+          <button class="btn btn-primary" type="submit"
+            style="width: 100%; padding: 12px; background-color: #128C7E; color: white; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; font-size: 1rem; transition: background-color 0.3s;">
+            Submit
+          </button>
+        </form>
+
+        <a href="https://wa.me/254728974780?text=Hello%20Litoh%20Graphics%20Studio%2C%20I%20am%20interested%20in%20your%20services."
+          target="_blank"
+          style="display: block; margin-top: 15px; text-align: center; background-color: #25D366; color: white; padding: 12px; border-radius: 6px; font-weight: bold; text-decoration: none;">
+           Chat on WhatsApp
+        </a>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="contact-info" style="flex: 1; min-width: 280px;">
+        <div class="contact-item" style="margin-bottom: 25px;">
+          <a href="mailto:samuelitodiaz500@gmail.com"
+             target="_blank"
+             style="color: #e53935; text-decoration: none; font-weight: bold;">
+            <img src="https://img.icons8.com/color/24/gmail-new.png" alt="Gmail Icon" style="vertical-align: middle; margin-right: 5px;">
+            samuelitodiaz500@gmail.com
+          </a>
+        </div>
+
+        <div class="contact-item" style="margin-bottom: 20px;">
+          <h4>📱 Phone/WhatsApp</h4>
+          <p><a href="tel:+254728974780" style="color: #333; text-decoration: none;">+254 728 974 780</a></p>
+        </div>
+
+        <div class="contact-item" style="margin-bottom: 20px;">
+          <h4>📍 Location</h4>
+          <p>
+            <a href="https://www.google.com/maps/place/FPFK+Embakasi+Church,+Nairobi,+Kenya"
+               target="_blank"
+               style="text-decoration: none; color: #333;">
+              <img src="https://img.icons8.com/ios-filled/20/000000/marker.png" alt="Location Icon" style="vertical-align: middle; margin-right: 5px;">
+              Litoh Graphic Studios, Nairobi, Kenya
+            </a>
+          </p>
+        </div>
+
+        <div class="contact-item">
+          <h4>🕒 Business Hours</h4>
+          <p>Mon - Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 4:00 PM</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WhatsApp Form Script -->
+<script>
+  document.getElementById("whatsappForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const service = document.getElementById("service").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    const phone = "254728974780";
+    const fullMessage = `Hello, my name is *${name}*.\n\n📧 Email: ${email}\n🛠️ Service Needed: ${service}\n📝 Project Details:\n${message}`;
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(fullMessage)}`;
+
+    window.open(url, "_blank");
+  });
+</script>
+
+
+   <!-- Footer -->
+<footer style="background-color: #111; color: #fff; padding: 40px 0; font-family: Arial, sans-serif;">
+    <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+        <!-- Branding Section -->
+        <div class="footer-section" style="flex: 1; min-width: 250px; margin-bottom: 20px;">
+            <h3 style="color: #00ffcc;">Litoh Graphics Studio</h3>
+            <p>Professional graphic design, branding, and printing services in Nairobi, Kenya.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-section" style="flex: 1; min-width: 150px; margin-bottom: 20px;">
+            <h3 style="color: #00ffcc;">Quick Links</h3>
+            <p><a href="#home" style="color: #ccc; text-decoration: none;">Home</a></p>
+            <p><a href="#contact" style="color: #ccc; text-decoration: none;">Contact Us</a></p>
+        </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div style="text-align: center; border-top: 1px solid #333; padding-top: 20px; margin-top: 20px; font-size: 14px;">
+        &copy; 2025 Litoh Graphics Studio. All rights reserved.
+    </div>
+</footer>
